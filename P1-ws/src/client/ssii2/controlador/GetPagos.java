@@ -22,6 +22,7 @@ import ssii2.visa.PagoBean;
 import javax.xml.ws.WebServiceRef; 
 import javax.xml.ws.BindingProvider;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -70,7 +71,7 @@ public class GetPagos extends ServletRaiz {
 		String idComercio = request.getParameter(PARAM_ID_COMERCIO);
 		
 		/* Petici&oacute;n de los pagos para el comercio */
-		ArrayList<PagoBean> pagosArraylist = dao.getPagos(idComercio);    
+		List<PagoBean> pagosArraylist = dao.getPagos(idComercio);    
 
         PagoBean [] pagos = pagosArraylist.toArray(new PagoBean[pagosArraylist.size()]);
 

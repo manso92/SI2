@@ -370,10 +370,8 @@ public class VisaDAOWS extends DBTester {
 
                 pagos.add(p);
             }
-
-            ret = new PagoBean[pagos.size()];
-            ret = pagos.toArray(ret);
-
+            //ret = new PagoBean[pagos.size()];
+            //ret = pagos.toArray(ret);
             // Cerramos / devolvemos la conexion al pool
             pcon.close();
 
@@ -395,7 +393,7 @@ public class VisaDAOWS extends DBTester {
             }
         }
 
-        return new ArrayList<PagoBean>(Arrays.asList(ret));
+        return pagos;
     }
 
     // Borrar los pagos asociados a un comercio
@@ -496,7 +494,6 @@ public class VisaDAOWS extends DBTester {
      * @return the pooled
      */
     @Override
-    @WebMethod(operationName ="isDirectConnection")
     public boolean isDirectConnection() {
         return super.isDirectConnection();
     }
@@ -504,9 +501,8 @@ public class VisaDAOWS extends DBTester {
     /**
      * @param directConnection valor de conexión directa o indirecta
      */
-    @WebMethod(operationName ="setDirectConnection")
     @Override
-    public void setDirectConnection(@WebParam(name="directConnection") boolean directConnection) {
+    public void setDirectConnection(boolean directConnection) {
         super.setDirectConnection(directConnection);
     }
 
@@ -514,7 +510,6 @@ public class VisaDAOWS extends DBTester {
     /**
      * Imprime traza de depuracion
      */
-    @WebMethod(exclude =true)
     public void errorLog(String error) {
         if (isDebug())
             System.err.println("[directConnection=" + this.isDirectConnection() +"] " +
