@@ -218,6 +218,13 @@ private void printAddresses(HttpServletRequest request, HttpServletResponse resp
             impd = -1.0;
         }
 
+
+        pago.setInstancia(System.getProperty("com.sun.aas.instanceName"));
+
+        try {
+           pago.setDireccionIP(java.net.InetAddress.getLocalHost().getHostAddress());
+        } catch (Exception e){}
+
         pago.setImporte(impd);
         pago.setRutaRetorno(request.getParameter(PARAM_RUTA_RETORNO));  
         return pago;
