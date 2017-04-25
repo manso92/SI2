@@ -142,7 +142,7 @@ public class PagoBean {
      * @return la instancia
      */
     public String getInstancia() {
-        return instnacia;
+        return instancia;
     }
 
     /**
